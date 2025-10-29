@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import PokemonSection from './components/pokemo';
+import TriviaSection from './components/TriviaSection';
+import WeatherSection from './components/clima';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/variables.scss';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
+        <div className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<PokemonSection />} />
+            <Route path="/jokes" element={<PokemonSection />} />
+            <Route path="/trivia" element={<TriviaSection />} />
+            <Route path="/exchange" element={<WeatherSection />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
